@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.JS 13
 
-## Getting Started
-
-First, run the development server:
+Installation
+Create a new Next.js app that enables the app directory and uses TypeScript.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+ npx create-next-app@latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## WHERE DO WE PUT UI COMPONENT (SERVER OR CLIENT COMPONENT)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+we need to decide whether or not it's going to be a server or client.
+By default all components next.js 13 are server components.
+However we may want to have an interactive feature here like a sign button we cloud turn this into a client component.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Server COMPONENT.
 
-## Learn More
+Server Component is a component that is fetched and rendered ON THE SERVER
+When we make a server component, the component is built on the server and returns HTML for the server component
+In app directory, which is a newly introduced feature in NextJS 13, server components are the default, meaning all the components and pages are rendered on the server
 
-To learn more about Next.js, take a look at the following resources:
+### CLIENT COMPONENT.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Client Component is the one that is fetched and rendered ON THE CLIENT
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### But how do we decide which should be client components?
 
-## Deploy on Vercel
+##### "use client"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+NextJS recommends using server components until you need to use client components. React hooks, for example **useState()**, **useEffect()**, **useContext()**, are only available on the client side. Furthermore, if you need to access browser-related things, like onClick **events** , window or browserAPI, you need to use the client component. Just remember, you need to add "use client" on top of the components you want to use as client components.
+<img title="a title" alt="Alt text" src="/components.png">

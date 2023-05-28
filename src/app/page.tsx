@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { Post } from "./blog/[slug]/page";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 1200;
+// export const runtime = "edge";
 export default async function Blog() {
-  const posts = await fetch("http://localhost:3000/api/content").then((res) =>
-    res.json()
-  );
+  const posts = await fetch("http://127.0.0.1:3000/api/content", {
+    cache: "no-cache",
+  }).then((res) => res.json());
   return (
     <div className="text-center">
       <h1 className="title font-bold text-2xl  block cursor-pointer  pt-4 pb-3">
@@ -13,8 +15,11 @@ export default async function Blog() {
       </h1>
       <ul>
         <div className="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 ">
-          {posts.map((post: any) => (
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+          {posts.map((post: Post, index: number) => (
+            <div
+              key={index}
+              className="max-w-sm rounded overflow-hidden shadow-lg"
+            >
               <div className="px-6 py-4">
                 <div className="font-bold">
                   {" "}

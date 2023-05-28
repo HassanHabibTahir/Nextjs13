@@ -5,7 +5,7 @@ const posts = [
     title: "His mother had always taught him",
     slug: "his-mother",
     content:
-      "hI HASSAN HABIB His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto.",
+      "hI! His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto.",
   },
   {
     title: "Dolor Sit Amet",

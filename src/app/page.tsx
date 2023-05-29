@@ -1,10 +1,17 @@
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { Post } from "./blog/[slug]/page";
-
 export const dynamic = "force-dynamic";
 export const revalidate = 1200;
 // export const runtime = "edge";
 export default async function Blog() {
+  const session = getServerSession();
+  if (!session) {
+    redirect("/api/auth/signin");
+    // return <p>You must be signed in...</p>
+  }
+
   const posts = await fetch("http://127.0.0.1:3000/api/content", {
     cache: "no-cache",
   }).then((res) => res.json());

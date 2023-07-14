@@ -1,5 +1,7 @@
 # Next.JS 13
 
+<!-- https://github.com/fireship-io/nextjs-course -->
+
 Installation
 Create a new Next.js app that enables the app directory and uses TypeScript.
 
